@@ -67,3 +67,31 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Ignore database and environment files
+db.sqlite
+.env
+
+# Ignore Python virtual environment folders
+venv/
+env/
+__pycache__/
+
+# Ignore compiled Python files
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignore logs and backups
+*.log
+*.bak
+*.swp
+
+# Ignore local development configuration
+instance/
+
+# Ignore generated artifacts
+*.egg-info/
+dist/
+build/
+*.egg
