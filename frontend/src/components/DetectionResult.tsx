@@ -1,24 +1,24 @@
 import React from "react";
 import Image from "next/image";
 import { PrimaryButton } from "@/components/PrimaryButton";
+import DecodedImage from "./DecodedImage";
 
-export const DetectionResult = () => {
+type Props = {
+  imageSrc: string;
+  detectionLabel: string;
+};
+
+export const DetectionResult = ({ imageSrc, detectionLabel }: Props) => {
   return (
     <div className="row flex__center">
       <div className="col">
         <p className="body_text">uploaded image</p>
-        <Image
-          src="/images/result-image.png"
-          alt=""
-          className="result_image"
-          width={450}
-          height={300}
-        />
+        <DecodedImage imageSrc={imageSrc} />
       </div>
       <div className="col detection_results flex__center">
         <div className="content_field">
           <p className="body_text detection_label">Detection label</p>
-          <p className="detection_content">Non-Tumor</p>
+          <p className="detection_content">{detectionLabel}</p>
         </div>
         <div className="content_field">
           <p className="body_text detection_label">Label Explanation</p>

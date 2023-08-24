@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import {useEffect} from "react";
+import { useEffect } from "react";
+import DecodedImage from "./DecodedImage";
 
 interface DetectionHistoryProps {
   imageSrc: string;
@@ -13,20 +14,12 @@ export const DetectionHistory = ({
 }: DetectionHistoryProps) => {
   useEffect(() => {
     console.log("hi");
-  }
-  , []);
+  }, []);
   return (
     <div className="row history-item flex__center">
       <div className="col">
         <p className="body_text">uploaded image</p>
-        <Image
-          src={imageSrc}
-          alt=""
-          className="result_image"
-          width={450}
-          height={300}
-        />
-        {/* image is base 64 want to convert */}
+        <DecodedImage imageSrc={imageSrc} />
       </div>
       <div className="col detection_results flex__center">
         <div className="content_field">
