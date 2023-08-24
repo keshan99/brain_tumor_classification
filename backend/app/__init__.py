@@ -1,11 +1,12 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+# from flask_sqlalchemy import SQLAlchemy
+from flask_mysqldb import MySQL
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
 
-db = SQLAlchemy()
+db = MySQL()
 
 def create_app():
     app = Flask(__name__)
