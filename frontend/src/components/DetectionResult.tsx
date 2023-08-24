@@ -20,13 +20,13 @@ export const DetectionResult = ({ imageSrc, detectionLabel }: Props) => {
           <p className="body_text detection_label">Detection label</p>
           <p className="detection_content">{detectionLabel}</p>
         </div>
-        <div className="content_field">
+        {/* <div className="content_field">
           <p className="body_text detection_label">Label Explanation</p>
           <p className="detection_content">
             Uploaded brain scan has been meticulously analyzed, revealing a
             reassuring result – no evidence of tumors.
           </p>
-        </div>
+        </div> */}
         <div className="content_field">
           <p className="body_text detection_label">Add Feedback</p>
           <p className="detection_content">

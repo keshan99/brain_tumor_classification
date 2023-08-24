@@ -41,7 +41,9 @@ export const FileUploader = () => {
       </div>
       <div>
         <input type="file" accept="image/*" onChange={handleFileChange} />
-        <button onClick={handleUpload}>Upload</button>
+        <button className="upload_btn" onClick={handleUpload}>
+          Upload
+        </button>
       </div>
     </div>
   );
