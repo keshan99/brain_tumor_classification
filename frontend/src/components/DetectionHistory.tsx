@@ -5,13 +5,11 @@ import {useEffect} from "react";
 interface DetectionHistoryProps {
   imageSrc: string;
   detectionLabel: string;
-  labelExplanation: string;
 }
 
 export const DetectionHistory = ({
   imageSrc,
   detectionLabel,
-  labelExplanation,
 }: DetectionHistoryProps) => {
   useEffect(() => {
     console.log("hi");
@@ -28,15 +26,12 @@ export const DetectionHistory = ({
           width={450}
           height={300}
         />
+        {/* image is base 64 want to convert */}
       </div>
       <div className="col detection_results flex__center">
         <div className="content_field">
           <p className="body_text detection_label">Detection label</p>
           <p className="detection_content">{detectionLabel}</p>
-        </div>
-        <div className="content_field">
-          <p className="body_text detection_label">Label Explanation</p>
-          <p className="detection_content">{labelExplanation}</p>
         </div>
         <div className="content_field">
           <p className="body_text detection_label">Add Feedback</p>

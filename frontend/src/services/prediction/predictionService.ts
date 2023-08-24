@@ -5,27 +5,54 @@ const tempHistroy:PredictionHistoryType[] = [
         predictionId: "p1",
         imageSrc: "/images/result-image.png",
         detectionLabel: "Brain Tumor",
-        labelExplanation: "This image shows a brain tumor."
     },
     {
         predictionId: "p2",
         imageSrc: "/images/result-image.png",
         detectionLabel: "No Abnormalities Detected",
-        labelExplanation: "This image shows no abnormalities in the brain."
     },
     {
         predictionId: "p3",
         imageSrc: "/images/result-image.png",
         detectionLabel: "Stroke",
-        labelExplanation: "This image shows a stroke in the brain."
     }
 ]
 
 
-
+// api link https://brainbackend-9lzy.onrender.com/api/detections
+// out: [{id,image(bytes code),label},{id,image(bytes code),label},{id,image(bytes code),label]
 async function getPredictionHistory(): Promise<PredictionHistoryType[]> {
-    const data = tempHistroy
-    return data
+    try{
+        const response = await fetch("https://brainbackend-9lzy.onrender.com/api/detections", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        const data = await response.json();
+        let returnData:PredictionHistoryType[] = [];
+
+        // [{id,image(bytes code),label},{id,image(bytes code),label},{id,image(bytes code),label] => 
+        // [{predictionId: string; imageSrc: string;detectionLabel: string}}]
+        data.forEach((element:{
+            image:string
+            id: string
+            label: string
+        }) => {
+            returnData.push({
+                predictionId: element.id,
+                imageSrc: element.image,
+                detectionLabel: element.label
+            });
+        });
+        
+        console.log(returnData);
+        return returnData;
+    }
+    catch(error){
+        console.log(error);
+        return []
+    }
 }
 
 export { getPredictionHistory }

@@ -28,7 +28,6 @@ export default function History() {
           key={prediction.predictionId}
           imageSrc={prediction.imageSrc}
           detectionLabel={prediction.detectionLabel}
-          labelExplanation={prediction.labelExplanation}
         />
       ))}
 
