@@ -1,13 +1,28 @@
 import React from "react";
 import Image from "next/image";
+import {useEffect} from "react";
 
-export const DetectionHistory = () => {
+interface DetectionHistoryProps {
+  imageSrc: string;
+  detectionLabel: string;
+  labelExplanation: string;
+}
+
+export const DetectionHistory = ({
+  imageSrc,
+  detectionLabel,
+  labelExplanation,
+}: DetectionHistoryProps) => {
+  useEffect(() => {
+    console.log("hi");
+  }
+  , []);
   return (
     <div className="row history-item flex__center">
       <div className="col">
         <p className="body_text">uploaded image</p>
         <Image
-          src="/images/result-image.png"
+          src={imageSrc}
           alt=""
           className="result_image"
           width={450}
@@ -17,14 +32,11 @@ export const DetectionHistory = () => {
       <div className="col detection_results flex__center">
         <div className="content_field">
           <p className="body_text detection_label">Detection label</p>
-          <p className="detection_content">Non-Tumor</p>
+          <p className="detection_content">{detectionLabel}</p>
         </div>
         <div className="content_field">
           <p className="body_text detection_label">Label Explanation</p>
-          <p className="detection_content">
-            Uploaded brain scan has been meticulously analyzed, revealing a
-            reassuring result – no evidence of tumors.
-          </p>
+          <p className="detection_content">{labelExplanation}</p>
         </div>
         <div className="content_field">
           <p className="body_text detection_label">Add Feedback</p>
