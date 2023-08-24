@@ -1,5 +1,6 @@
 from flask import request, jsonify, Blueprint
 from app import db
+import base64
 from app.models import DetectionHistory
 
 api_bp = Blueprint('api', __name__)
@@ -14,7 +15,7 @@ def get_detections():
             "label": detection.label,
             "explanation": detection.explanation,
             "feedback": detection.feedback,
-            # You might need to handle image data appropriately, like encoding to base64
+            "image": image_to_base64(detection.image) if detection.image else None
         }
         for detection in detections
     ]
@@ -45,7 +46,7 @@ def get_detection(id):
         "label": detection.label,
         "explanation": detection.explanation,
         "feedback": detection.feedback,
-        # Handle image data similarly to the 'get_detections' route
+        "image": image_to_base64(detection.image) if detection.image else None
     })
 
 # Update one detection history item
@@ -62,3 +63,9 @@ def update_detection(id):
     detection.images = data['images'].encode()  # Assuming you encode the blob data
     db.session.commit()
     return jsonify({"message": "Detection updated successfully"})
+
+def image_to_base64(image):
+    if image:
+        encoded_image = base64.b64encode(image).decode('utf-8')
+        return encoded_image
+    return None

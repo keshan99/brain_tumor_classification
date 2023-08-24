@@ -5,4 +5,4 @@ class DetectionHistory(db.Model):
     label = db.Column(db.String(100), nullable=False)
     explanation = db.Column(db.String(500), nullable=False)
     feedback = db.Column(db.String(500))
-    images = db.Column(db.LargeBinary, nullable=False)  # Use LargeBinary for blob data
+    image = db.Column(db.LargeBinary, nullable=False)  # Use LargeBinary for blob data
